@@ -1,5 +1,6 @@
 ---
 title: HMSRemoteTrackStats
+nav: '4.48'
 ---
 
 Extends RTCInboundRtpStreamStats
@@ -54,6 +55,16 @@ BaseTrackStats.codec
 #### Inherited from
 
 BaseTrackStats.codecId
+
+---
+
+### enabled
+
+• `Optional` **enabled**: `boolean`
+
+#### Inherited from
+
+BaseTrackStats.enabled
 
 ---
 
@@ -247,6 +258,16 @@ MissingInboundStats.remoteId
 
 ---
 
+### roundTripTime
+
+• `Optional` **roundTripTime**: `number`
+
+#### Inherited from
+
+MissingInboundStats.roundTripTime
+
+---
+
 ### ssrc
 
 • **ssrc**: `number`
@@ -264,6 +285,16 @@ BaseTrackStats.ssrc
 #### Inherited from
 
 BaseTrackStats.timestamp
+
+---
+
+### totalRoundTripTime
+
+• `Optional` **totalRoundTripTime**: `number`
+
+#### Inherited from
+
+MissingInboundStats.totalRoundTripTime
 
 ---
 

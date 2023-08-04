@@ -1,12 +1,13 @@
 ---
 title: RTMPRecordingConfig
+nav: '4.70'
 ---
 
 ## Properties
 
 ### meetingURL
 
-• **meetingURL**: `string`
+• `Optional` **meetingURL**: `string`
 
 ---
 

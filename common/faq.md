@@ -24,7 +24,7 @@ No, you cannot delete a room. The “delete room” functionality automatically 
 
 - **Creating new rooms for every session**:  You can create as many rooms as you want, there is no limit on room creation
 - **Disable room**: If you don't want additional requests to join a room, you can disable a room from the dashboard or via [server API](/server-side/v2/Rooms/disable-or-enable). 
-- **Dev & Prod Env**: If you want to delete rooms from your account as you transition from Development to the Production stage, we recommend using "Workspaces." It enables you to create two or more workspaces per your need and isolate the data for each workspace. Please check this blog for more information.
+- **Dev & Prod Env**: If you want to delete rooms from your account as you transition from Development to the Production stage, we recommend using "Workspaces." It enables you to create two or more workspaces per your need and isolate the data for each workspace. Please check [this blog](https://www.100ms.live/blog/launching-teams-workspaces) for more information.
 
 ## Getting started
 
@@ -77,12 +77,12 @@ Video will be downloaded only for the visible tiles, whereas only audio will be 
 There are no feature-level limitations while using a 100ms account. However, an invoice is generated when:
 
 - Your usage exhausts the free credits for
-    - video conferencing (10,000 minutes) or
+    - Video conferencing (10,000 minutes) or
     - HLS (live streaming) viewer minutes (10,000 minutes) or
     - HLS encoding minutes (1,000 minutes)
-- Or if you use the recording feature
-- Or if you use external streaming (RTMP) feature
-- Or if use HD quality for video conferencing (WebRTC), or live streaming viewers (HLS viewer). 
+    - Recording minutes (300 minutes)
+    - External (RTMP) streaming minutes (300 minutes)
+- Although, if you use HD quality for any of the above, you will be charged, and free credits won't apply.
 
 Please check our [pricing page](https://www.100ms.live/pricing) or [contact us](https://www.100ms.live/contact) for more information. 
 
@@ -131,19 +131,18 @@ No, the pricing is different for standard and high definition. Our product exper
 
 #### Does billing on minutes count when the room has only the local peer in it?
 
-Yes, if any peer joins and is publishing video or audio, it will be billed.
-
+When a peer joins a room, a session starts, and usage minutes will be billed even when the peer is not publishing or subscribing to audio/video tracks. 
 
 ## Authentication and tokens
 
-#### What is the difference between app token and management token?
+#### What is the difference between auth token and management token?
 
-- **App token** : Used to authenticate and allow end-users (peers) to join 100ms rooms. An App Token controls Peer identity and Room permissions in your real-time or Interactive live-streaming video application.
+- **Auth token** : Used to authenticate and allow end-users (peers) to join 100ms rooms. An App Token controls Peer identity and Room permissions in your real-time or Interactive live-streaming video application.
 - **Management token** : Used to authenticate all the requests to 100ms REST API (server-side).
 
-#### Is there an easy method to create an app token?
+#### Is there an easy method to create an auth token?
 
-Yes, you can get App tokens using a couple of approaches based on your app's lifecycle stage. Please check [this guide](/javascript/v2/foundation/security-and-tokens#how-to-use) for more information
+Yes, you can get Auth tokens using a couple of approaches based on your app's lifecycle stage. Please check [this guide](/javascript/v2/foundation/security-and-tokens#how-to-use) for more information
 
 #### Is there a easy method to create an management token?
 
@@ -151,9 +150,9 @@ Yes, if you're exploring 100ms server APIs, our Postman collection contains a pr
 
 #### What is the validity of management and client token?
 
-If you use the code sample from [authentication and tokens guide](/javascript/v2/foundation/security-and-tokens#app-token) the validity of the token will be set as 24 hours. However, you can increase this to a maximum of 90 days by updating the value for expiresIn field.
+If you use the code sample from [authentication and tokens guide](/javascript/v2/foundation/security-and-tokens#auth-token) the validity of the token will be set as 24 hours. However, you can increase this to a maximum of 90 days by updating the value for expiresIn field.
 
-#### Why is the “role” variable needed when generating the app token?
+#### Why is the “role” variable needed when generating the auth token?
 
 The role argument should be assigned with the name of the role created in the template. A role defines the following: 
 - Who a peer a see/hear 
@@ -164,13 +163,13 @@ Please check [templates and roles guide](/javascript/v2/foundation/templates-and
 
 #### Can we generate two application access tokens, one for QA and one for production, so that messages from QA don't flood the production environment?
 
-Yes, this is possible with Teams & workspaces on the100ms dashboard - create multiple workspaces and use the App access key and App secret from each of these workspaces to create different app tokens or management tokens based on your requirements. For more information, please check [this blog](https://www.100ms.live/blog/launching-teams-workspaces) and also check your [100ms dashboard](https://dashboard.100ms.live/) to see how this works.
+Yes, this is possible with Teams & workspaces on the100ms dashboard - create multiple workspaces and use the App access key and App secret from each of these workspaces to create different auth tokens or management tokens based on your requirements. For more information, please check [this blog](https://www.100ms.live/blog/launching-teams-workspaces) and also check your [100ms dashboard](https://dashboard.100ms.live/) to see how this works.
 
-#### I’d like to use the endpoint of my backend service instead of the 100ms token endpoint for app token generation in the React sample app. How do I do that? 
+#### I’d like to use the endpoint of my backend service instead of the 100ms token endpoint for auth token generation in the React sample app. How do I do that? 
 
-You can set up a token generation service on your end to create app tokens and block users that are trying to join without a token that's generated from your service. Please check authentication and [tokens guide](/javascript/v2/foundation/security-and-tokens#app-token) for more information.
+You can set up a token generation service on your end to create auth tokens and block users that are trying to join without a token that's generated from your service. Please check authentication and [tokens guide](/javascript/v2/foundation/security-and-tokens#auth-token) for more information.
 
-You can update the code to point to your own token service (relevant code in the sample - see getToken(...)), your token endpoint can follow a similar interface: for a given room_id and role name, return the app token JWT.
+You can update the code to point to your own token service (relevant code in the sample - see getToken(...)), your token endpoint can follow a similar interface: for a given room_id and role name, return the auth token JWT.
 
 You can continue using the existing routes (room_id/role) or set up your own routes in the cloned/forked code.
 
@@ -317,7 +316,7 @@ Please check these links for more details.
 
 #### Can I integrate a feature similar to Twitter super followers using 100ms by only allowing the authenticated users?
 
-Yes, you can use interactive live streaming (HLS) to integrate a similar app and the live feed of the streaming will be available in a room which can be accessed by joining a room with a JWT token ([auth token](/javascript/v2/foundation/security-and-tokens#app-token)) with the viewer role.
+Yes, you can use interactive live streaming (HLS) to integrate a similar app and the live feed of the streaming will be available in a room which can be accessed by joining a room with a JWT token ([auth token](/javascript/v2/foundation/security-and-tokens#auth-token)) with the viewer role.
 
 ## External streaming (RTMP)
 
@@ -340,9 +339,9 @@ Please check the [collaborative whiteboard guide](/javascript/v2/plugins/collabo
 
 #### Do you have a list of extra plugins that can be added to live sessions?
 
-Currently, you can build additional interactive experiences in your app with the help of [peer metadata](/javascript/v2/advanced-features/peer-metadata). You can integrate features like raise hand, polls, quizzes, etc,. using this. You can also check the existing plugins on our platform such as [collaborative whiteboard](/javascript/v2/plugins/collaborative-whiteboard), [virtual background](/javascript/v2/plugins/virtual-background), [noise suppression](/javascript/v2/plugins/noise-suppression), Custom [audio](/javascript/v2/plugins/custom-audio-plugins) & [video](/javascript/v2/plugins/custom-video-plugins) plugins. Please stay tuned to our product updates by signing up for our newsletter from [here](https://www.100ms.live/blog#email).
+Currently, you can build additional interactive experiences in your app with the help of [peer metadata](/javascript/v2/advanced-features/peer-metadata). You can integrate features like raise hand, polls, quizzes, etc,. using this. You can also check the existing plugins on our platform such as [collaborative whiteboard](/javascript/v2/plugins/collaborative-whiteboard), [virtual background](/javascript/v2/plugins/virtual-background), custom [audio](/javascript/v2/plugins/custom-audio-plugins) & [video](/javascript/v2/plugins/custom-video-plugins) plugins. Please stay tuned to our product updates by signing up for our newsletter from [here](https://www.100ms.live/blog#email).
 
-Currently, you can build additional interactive experiences in your app with the help of [Peer metadata](/javascript/v2/advanced-features/peer-metadata). You can integrate raise hand, polls, quizzes, etc,. using this. You can also check the existing plugins our platform such as [Virtual background](/javascript/v2/plugins/virtual-background), [Noise suppression](/javascript/v2/plugins/noise-suppression), Custom [audio](/javascript/v2/plugins/custom-audio-plugins) & [video](/javascript/v2/plugins/custom-video-plugins) plugins. We will soon be adding a whiteboard plugin as well. Please stay tuned our product updates by signing up for our newsletter from [here](https://www.100ms.live/blog#email).
+Currently, you can build additional interactive experiences in your app with the help of [Peer metadata](/javascript/v2/advanced-features/peer-metadata). You can integrate raise hand, polls, quizzes, etc,. using this. You can also check the existing plugins our platform such as [Virtual background](/javascript/v2/plugins/virtual-background), Custom [audio](/javascript/v2/plugins/custom-audio-plugins) & [video](/javascript/v2/plugins/custom-video-plugins) plugins. We will soon be adding a whiteboard plugin as well. Please stay tuned our product updates by signing up for our newsletter from [here](https://www.100ms.live/blog#email).
 
 ## Network and quality
 
@@ -490,7 +489,7 @@ No. Currently there is no API to update the webhook URL and headers, but you can
 
 100ms provides two methods to whitelist traffic from 100ms.
 
-1. [Domain and port whitelisting](/server-side/v2/introduction/firewall-and-ports)
+1. [Domain and port whitelisting](/server-side/v2/how--to-guides/firewall-and-ports)
 2. [Securing webhooks](/server-side/v2/introduction/webhook#how-to-secure-webhooks) 
 
 #### Can we end an active session programmatically (reset the room so that everyone is kicked from the meeting and it starts a new session)?

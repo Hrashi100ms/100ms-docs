@@ -1,5 +1,6 @@
 ---
 title: HMSRoom
+nav: '4.52'
 ---
 
 ## Properties

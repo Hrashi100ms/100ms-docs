@@ -1,5 +1,6 @@
 ---
 title: HMSRole
+nav: '4.49'
 ---
 
 ## Properties
@@ -23,6 +24,8 @@ title: HMSRole
 | `endRoom`          | `boolean` |
 | `hlsStreaming`     | `boolean` |
 | `mute`             | `boolean` |
+| `pollRead`         | `boolean` |
+| `pollWrite`        | `boolean` |
 | `removeOthers`     | `boolean` |
 | `rtmpStreaming`    | `boolean` |
 | `unmute`           | `boolean` |
