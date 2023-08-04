@@ -1,5 +1,6 @@
 ---
 title: HMSScreenShareConfig
+nav: '4.54'
 ---
 
 Config to have control over screenshare being captured. Note that
@@ -17,7 +18,9 @@ for sharing music.
 
 **`Default`**
 
-false
+```ts
+false;
+```
 
 ---
 
@@ -52,7 +55,9 @@ monitor - for full screen
 
 **`Default`**
 
-monitor
+```ts
+monitor;
+```
 
 ---
 
@@ -65,7 +70,9 @@ error if user doesn't select current tab for sharing.
 
 **`Default`**
 
-false
+```ts
+false;
+```
 
 ---
 
@@ -78,7 +85,9 @@ if user selects something else.
 
 **`Default`**
 
-false
+```ts
+false;
+```
 
 ---
 
@@ -93,7 +102,9 @@ this is set to include.
 
 **`Default`**
 
-exclude
+```ts
+exclude;
+```
 
 ---
 
@@ -107,7 +118,9 @@ Default is include, set to exclude if forceCurrentTab is true
 
 **`Default`**
 
-include
+```ts
+include;
+```
 
 ---
 
@@ -121,7 +134,9 @@ Note that sharing system audio will cause echo if mic is on.
 
 **`Default`**
 
-exclude
+```ts
+exclude;
+```
 
 ---
 
@@ -133,4 +148,6 @@ do not give an option to share audio while screen sharing.
 
 **`Default`**
 
-false
+```ts
+false;
+```

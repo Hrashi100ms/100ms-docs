@@ -1,5 +1,6 @@
 ---
-title: HMSPlaylist<T\>
+title: HMSPlaylist<T>
+nav: '4.33'
 ---
 
 ## Type parameters
