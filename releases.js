@@ -1,40 +1,8 @@
-const PLATFORM_WEB = 'Web';
-const PLATFORM_SERVER = 'Server';
-const PLATFORM_IOS = 'iOS';
-const PLATFORM_ANDROID = 'Android';
-const PLATFORM_REACT_NATIVE = 'React Native';
-const PLATFORM_FLUTTER = 'Flutter';
-
-
-export const releases = [
-    {
-        platform: PLATFORM_ANDROID,
-        version: 'v2.5.7',
-        date: 'January 20, 2023'
-    },
-    {
-        platform: PLATFORM_IOS,
-        version: '0.6.1',
-        date: 'January 19, 2023'
-    },
-    {
-        platform: PLATFORM_REACT_NATIVE,
-        version: '1.1.1',
-        date: 'December 12, 2022'
-    },
-    {
-        platform: PLATFORM_WEB,
-        version: '2022-12-19',
-        date: 'December 19, 2022'
-    },
-    {
-        platform: PLATFORM_FLUTTER,
-        version: '1.3.0',
-        date: 'February 1, 2022'
-    },
-    {
-        platform: PLATFORM_SERVER,
-        version: '2023-01-23',
-        date: 'January 23, 2023'
-    }
-];
+exports.releases = releases = {
+    Android: { version: 'v2.6.8', date: 'June 28, 2023' },
+    iOS: { version: '0.9.5', date: 'June 01, 2023' },
+    'React Native': { version: '1.7.0', date: 'June 21, 2023' },
+    Web: { version: '2023-06-01', date: 'June 01, 2023' },
+    Flutter: { version: '1.7.0', date: 'June 20, 2023' },
+    'Server-side': { version: '2023-05-11', date: 'May 11, 2023' }
+};

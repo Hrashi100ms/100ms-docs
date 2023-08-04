@@ -1,6 +1,13 @@
 ---
-title: HMSStore
+title: HMSStore<T>
+nav: '4.60'
 ---
+
+## Type parameters
+
+| Name | Type                                                                                                                                  |
+| :--- | :------------------------------------------------------------------------------------------------------------------------------------ |
+| `T`  | extends [`HMSGenericTypes`](/api-reference/javascript/v2/interfaces/HMSGenericTypes) = { `sessionStore`: `Record`<`string`, `any`\> } |
 
 ## Properties
 
@@ -53,15 +60,24 @@ title: HMSStore
 
 ---
 
+### polls
+
+• **polls**: `Record`<`string`, [`HMSPoll`](/api-reference/javascript/v2/interfaces/HMSPoll)\>
+
+---
+
 ### preview
 
-• **preview**: `Object`
+• `Optional` **preview**: `Object`
 
 #### Type declaration
 
-| Name    | Type                                                         |
-| :------ | :----------------------------------------------------------- |
-| `peer?` | [`HMSPeer`](/api-reference/javascript/v2/interfaces/HMSPeer) |
+| Name          | Type     |
+| :------------ | :------- |
+| `asRole?`     | `string` |
+| `audioTrack?` | `string` |
+| `localPeer?`  | `string` |
+| `videoTrack?` | `string` |
 
 ---
 
@@ -87,6 +103,16 @@ title: HMSStore
 
 • `Optional` **sessionMetadata**: `any`
 
+**`Deprecated`**
+
+use `sessionStore` instead
+
+---
+
+### sessionStore
+
+• **sessionStore**: `T`[``"sessionStore"``]
+
 ---
 
 ### settings
@@ -98,6 +124,12 @@ title: HMSStore
 ### speakers
 
 • **speakers**: `Record`<`string`, [`HMSSpeaker`](/api-reference/javascript/v2/interfaces/HMSSpeaker)\>
+
+---
+
+### templateAppData
+
+• **templateAppData**: `Record`<`string`, `string`\>
 
 ---
 

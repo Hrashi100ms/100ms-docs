@@ -1,5 +1,6 @@
 ---
 title: HMSVideoTrackSettings
+nav: '4.65'
 ---
 
 ## Properties
@@ -19,6 +20,12 @@ title: HMSVideoTrackSettings
 ### deviceId
 
 • `Optional` **deviceId**: `string`
+
+---
+
+### facingMode
+
+• `Optional` **facingMode**: `HMSFacingMode`
 
 ---
 

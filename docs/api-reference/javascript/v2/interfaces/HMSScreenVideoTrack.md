@@ -1,5 +1,6 @@
 ---
 title: HMSScreenVideoTrack
+nav: '4.55'
 ---
 
 ## Hierarchy
@@ -83,6 +84,19 @@ Omit.height
 #### Inherited from
 
 Omit.id
+
+---
+
+### isPublished
+
+• `Optional` **isPublished**: `boolean`
+
+only applicable for local tracks - to denote if a track has been published or not
+false for preview tracks
+
+#### Inherited from
+
+Omit.isPublished
 
 ---
 

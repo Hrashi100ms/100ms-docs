@@ -3,6 +3,121 @@ title: Release Notes
 nav: 4
 description: Release Notes for 100ms Android SDK
 ---
+## v2.7.2 - 2023-07-13
+
+### Fix
+- Override the local peer name given in preview with the name given in join
+
+## v2.7.1 - 2023-07-13
+
+### Changed
+- Unnecessary imports for `hls-player` were removed.
+- Analytics related fixes
+- Pixel distortion issue using SimulcastEncoderFactory
+
+## v2.6.8 - 2023-06-28
+
+### Added
+- Added option to NOT mute when phone is in ringing state. Using this also means that SDK cannot mute local peer on receiving a VoIP phone call
+
+## v2.6.7 - 2023-06-2
+
+### Added
+- SDK now sends detailed analytics from the webrtc publisher side for debugging call quality issues.
+
+## v2.6.6 - 2023-05-29
+
+### Breaking Changes
+- SessionStore's `onKeyChangeListener` now returns `JsonElement` instead of `Any`
+- The deprecated methods for `setSessionMetaData` and `getSessionMetaData` were removed. Please use the [SessionStore](../how-to-guides/interact-with-room/room/session-store) directly instead.
+
+### Fix
+- SessionStore API fix: While it can still take `Any` datatypes, it must return `JsonElement` because the SDK can't parse the values back. Do see changes to the [doc](../how-to-guides/interact-with-room/room/session-store)
+- Internal library path updates, no client visible changes.
+- HMSTrack when compared to null, would crash. `track == track?` for instance.
+
+### Added
+- MeetingUrl is now optional for rtmp/recordings
+
+
+## v2.6.5 - 2023-05-23
+
+### Fix
+- Fix `captureImageAtMaxSupportedResolution()` not working on certain devices which were using legacy camera1 API.
+
+## v2.6.4 - 2023-05-18
+
+### Added
+- `HMSMessage` now has `messageId` assigned to each message. After sending a message, add it to the UI from the `onMessageSuccess` callback to read the unique messageId.
+
+## v2.6.3 - 2023-05-08
+
+### Fix
+- Fixed video distortion in all Pixel devices by forcing s/w encoder.
+
+## v2.6.2 - 2023-05-01
+
+### Breaking Changes
+- KeyChangeListener for the session store now returns `Any` instead of `String` as data. This is equivalent to `Object` in Java.
+
+### Added
+- Simplifying how the videos can be shown on the app. [Here's](https://github.com/100mslive/100ms-android/pull/358/files) the code it reduces.
+- Session Store now receives data of Any/Object type rather than just strings.
+
+### Fix
+- Removing the key listeners in `HmsSessionStore` when disconnected could've crashed the app.
+- Role changing a non-hls role to hls and back would result in its tracks not being seen by new peers joining the call.
+
+## v2.6.1 - 2023-04-14
+
+### Breaking Changes
+- Hls stats is overhauled and now part of the new hls-player library.
+
+### Added
+- [HmsHlsPlayer](../how--to-guides/record-and-live-stream/hls-player). A new library that simplifies co-ordinating events on hls live streams with the app.
+- [Session Store](https://www.100ms.live/docs/android/v2/how--to-guides/interact-with-room/room/session-store) a room level real time key-value store that can be updated and listened to by any peer.
+
+### Changed
+- `volume` is a public property on `HMSRemoteAudioTrack.kt`
+
+### Fix
+- Bug that caused tracks to disappear after a peer's role was changed, with certain types of roles.
+- When logging was enabled, logs weren't being cleared in some cases resulting in the disk filling up on the device.
+- Internal analytics changes.
+- Crash with a certain type of notification.
+
+## v2.6.0 - 2023-03-31
+
+### Breaking Changes
+- getToken() is an instance level api and returns a string in onSuccess instead of a TokenResult object. It modifies an API introduced in 2.5.9. [Docs](https://www.100ms.live/docs/android/v2/get-started/quickstart#get-auth-token)
+- `customerUserID` is now nullable for both `HMSLocalPeer` and `HMSRemotePeer`.
+
+### Added
+- Audio is unsubscribed from if the volume is set to zero. This saves data during calls with a lot of muted peers.
+
+### Fixed
+- Updated internal analytics properties.
+
+## v2.5.9 - 2023-03-17
+
+### Added
+- Short Codes to join rooms - Rather than requiring your server infrastructure for authenticating users, you can now use a 100ms API to generate tokens for users. A user with a given short code can login as a certain role. One short code per role for each room.
+
+### Fixed
+- Analytics improvements to better measure 100ms performance.
+
+## v2.5.8 - 2023-03-07
+
+### Added
+- Allow echo cancellation, noise suppression and automatic gain control to be configureable from `HMSAudioTrackSettings`.
+- Limit the number of peers in the room with [Max Peer Count](https://www.100ms.live/docs/javascript/v2/how--to-guides/debugging/faq#is-there-any-way-to-limit-participants-in-a-room).
+- Added extra analytics for 100ms. (cluster)
+- Improved manual focus for the camera.
+
+### Fixed
+- Fixed Remote peer’s HMSRole having empty permissions, publish params and subscribe params.
+- Pixel 3 phones now always use software decoders to resolve an issue that happens when they don't.
+- Send screenshare track info separately in local statistics.
 
 ## v2.5.7 - 2023-01-20
 

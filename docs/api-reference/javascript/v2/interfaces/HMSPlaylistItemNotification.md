@@ -1,5 +1,6 @@
 ---
-title: HMSPlaylistItemNotification<T\>
+title: HMSPlaylistItemNotification<T>
+nav: '4.35'
 ---
 
 ## Type parameters

@@ -1,5 +1,6 @@
 ---
 title: HMSConfig
+nav: '4.13'
 ---
 
 the config object tells the SDK options you want to join with
@@ -43,6 +44,25 @@ client token which encodes room id and role to join with
 **`Link`**
 
 https://docs.100ms.live/javascript/v2/foundation/security-and-tokens
+
+---
+
+### autoManageVideo
+
+• `Optional` **autoManageVideo**: `boolean`
+
+if this flag is enabled, the SDK takes care of unsubscribing to the video when it goes out of view.
+Additionally if simulcast is enabled, it takes care of auto managing simulcast layers based on the
+dimensions of the video element to conserve bandwidth.
+
+---
+
+### autoManageWakeLock
+
+• `Optional` **autoManageWakeLock**: `boolean`
+
+if this flag is enabled, wake lock will be acquired automatically(if supported) when joining the room, so the device
+will be kept awake.
 
 ---
 

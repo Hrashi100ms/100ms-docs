@@ -1,5 +1,6 @@
 ---
 title: HMSVideoTrack
+nav: '4.64'
 ---
 
 ## Hierarchy
@@ -65,6 +66,19 @@ BaseTrack.enabled
 #### Inherited from
 
 BaseTrack.id
+
+---
+
+### isPublished
+
+• `Optional` **isPublished**: `boolean`
+
+only applicable for local tracks - to denote if a track has been published or not
+false for preview tracks
+
+#### Inherited from
+
+BaseTrack.isPublished
 
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: HMSScreenAudioTrack
+nav: '4.53'
 ---
 
 ## Hierarchy
@@ -47,6 +48,19 @@ title: HMSScreenAudioTrack
 #### Inherited from
 
 [HMSAudioTrack](/api-reference/javascript/v2/interfaces/HMSAudioTrack).[id](/api-reference/javascript/v2/interfaces/HMSAudioTrack#id)
+
+---
+
+### isPublished
+
+• `Optional` **isPublished**: `boolean`
+
+only applicable for local tracks - to denote if a track has been published or not
+false for preview tracks
+
+#### Inherited from
+
+[HMSAudioTrack](/api-reference/javascript/v2/interfaces/HMSAudioTrack).[isPublished](/api-reference/javascript/v2/interfaces/HMSAudioTrack#ispublished)
 
 ---
 
